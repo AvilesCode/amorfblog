@@ -9,7 +9,7 @@ class PostTest extends TestCase
 {
     public function testVerPost()
     {
-        $infoPosts = PostModel::all();
+        $infoPosts = PostModel::on('sqlite')->all();
         dd($infoPosts);
     }
 }

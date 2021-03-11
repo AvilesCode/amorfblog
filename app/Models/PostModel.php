@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostModel extends Model
 {
+    protected $connection = 'sqlite';
     protected $table = 'post';
     protected $primaryKey = 'id';
     public $timestamps = true;

@@ -12,7 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
+Route::get('test', function () {
+    $prueba = new \App\Clases\AmorfoTest();
+    return $prueba->probando();
+});
+
+/*Ruta de inicio*/
 Route::get('/', function () {
     return view('welcome');
+});
+
+/*Rutas para la navegacion dentro del blog*/
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', 'Blog\NavegacionController@landing');
+});
+
+
+/*Rutas para la navegacion dentro de las opciones de administrador*/
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
