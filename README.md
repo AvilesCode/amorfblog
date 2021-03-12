@@ -56,21 +56,34 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## Tips
+## Tips de ejecucion en consola
+
+*Crear BD*
+> * Migrations & Seeders: php artisan migrate:fresh --seed
+
+**Nota:** Realiza la ejecucion de las migraciones junto con las seeds que estan declaradas en DatabaseSeeders
+___
 
 *Migrations*
-- Up(): php artisan migrate
-- Down(): php artisan migrate:rollback
+> * Up(): php artisan migrate
+> 
+> * Down(): php artisan migrate:rollback
 
 *Seeds*
-- Todos: php artisan db:seed
-- Especifica: php artisan db:seed --class=NombreSeedes
+> * Todos: php artisan db:seed
+> 
+> * Especifica: php artisan db:seed --class=NombreSeeder
+
+___
 
 *Test*
-- php artisan test
-- php artisan test --filter testMarkdown
-- (windows) vendor\bin\phpunit --filter testMarkdown
-- (linux) ./vendor/bin/phpunit --filter testMarkdown
+> * php artisan test
+> 
+> * php artisan test --filter testMarkdown
+> 
+> * (windows) vendor\bin\phpunit --filter testMarkdown
+> 
+> * (linux) ./vendor/bin/phpunit --filter testMarkdown
 
 ## License
 

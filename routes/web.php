@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,6 @@ Route::group(['prefix' => 'blog'], function () {
 /*Rutas para la navegacion dentro de las opciones de administrador*/
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('menu', 'HomeController@menu');
+    Route::resource('post','Admin\PublicacionesController');
 });

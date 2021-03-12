@@ -41,6 +41,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    /*
+     * Se sobre escribe la funcion para que no se vea el form de register del trait: RegistersUsers
+     * */
+    public function showRegistrationForm()
+    {
+        return view('auth.login');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -60,14 +68,14 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return route('login');
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ]);*/
     }
 }
