@@ -1,53 +1,47 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
+        <!-- Scripts -->
 
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('blog') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <div class="container">
+                    <a class="navbar-brand" style="color: rebeccapurple; font-size: 20px" href="{{ url('blog') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                </div>
+            </nav>
 
-            </div>
+            <main class="py-4">
+                @yield('content')
+            </main>
 
+            <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: rebeccapurple">
+                <div class="container">
+                    <div class="navbar-brand"></div>
+                    <div class="navbar-brand text-light">
+                        Todos los derechos reservados | &#169;AvilesCode
+                    </div>
+                    <div class="navbar-brand"></div>
+                </div>
+            </nav>
         </div>
-    </nav>
-
-    <main class="py-4">
-        @yield('content')
-    </main>
-
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('blog') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-
-            </div>
-
-        </div>
-    </nav>
-</div>
-</body>
+    </body>
 </html>

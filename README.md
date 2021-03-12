@@ -56,6 +56,22 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Tips
+
+*Migrations*
+- Up(): php artisan migrate
+- Down(): php artisan migrate:rollback
+
+*Seeds*
+- Todos: php artisan db:seed
+- Especifica: php artisan db:seed --class=NombreSeedes
+
+*Test*
+- php artisan test
+- php artisan test --filter testMarkdown
+- (windows) vendor\bin\phpunit --filter testMarkdown
+- (linux) ./vendor/bin/phpunit --filter testMarkdown
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

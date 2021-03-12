@@ -18,6 +18,7 @@ class PostSetup extends Migration
             $table->string('title');
             $table->string('slug')->index();
             $table->string('content');
+            $table->string('content_md')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,18 @@ class NavegacionController extends Controller
 {
     public function landing()
     {
-        $infoPosts = PostModel::all();
-        return view('blog.index')->with('datos', $infoPosts);
+        $publicaciones = PostModel::paginate(5);
+        //dd($publicaciones);
+        return view('blog.index')->with('publicaciones', $publicaciones);
+    }
+
+    public function post($post_slug)
+    {
+        $publicacion = PostModel::where('slug',$post_slug)->first();
+        $imagen = "img".rand(1,4).".png";
+        //dd($publicacion);
+        return view('blog.post')
+            ->with('publicacion', $publicacion)
+            ->with('imagen', $imagen);
     }
 }

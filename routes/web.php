@@ -27,6 +27,7 @@ Route::get('/', function () {
 /*Rutas para la navegacion dentro del blog*/
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', 'Blog\NavegacionController@landing');
+    Route::get('post/{post_slug}','Blog\NavegacionController@post');
 });
 
 

@@ -17,4 +17,11 @@ class PostModel extends Model
         'slug',
         'content'
     ];
+
+    public function getTitleAttribute($title)
+    {
+        return ucfirst($title);
+    }
+
+
 }
