@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Clases\PostUtils;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
 
 class PostModel extends Model
@@ -15,7 +17,8 @@ class PostModel extends Model
         'id',
         'title',
         'slug',
-        'content'
+        'content',
+        'content_md'
     ];
 
     public function getTitleAttribute($title)
@@ -23,5 +26,8 @@ class PostModel extends Model
         return ucfirst($title);
     }
 
-
+    public function setContentMdAttribute($value)
+    {
+        $this->attributes['content_md'] = Markdown::convertToHtml($value);
+    }
 }

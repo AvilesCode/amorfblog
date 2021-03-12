@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Clases\PostUtils;
+use App\Clases\PostValidations;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Models\PostModel;
 use Illuminate\Http\Request;
 
@@ -28,12 +31,34 @@ class PublicacionesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
      */
     public function store(Request $request)
     {
-        dd("store");
+        $validated = $request->validate([
+            'title' => 'required|min:3',
+            'content' => 'required|min:2|max:500',
+        ]);
+        //dd($validated);
+
+        $valores = $request->toArray();
+        $validadorSlug = new PostValidations();
+        $slugExistente = false;
+        do
+        {
+            $slug = PostUtils::formateadorSlug($valores['title'], $slugExistente);
+            $slugValido = $validadorSlug->validaSlug($slug);
+        } while(!$slugValido);
+        //dd($slug);
+
+        $post = new PostModel();
+        $post->title = $valores['title'];
+        $post->slug = $slug;
+        $post->content = $valores['content'];
+        if(isset($valores['content_md'])) { $post->content_md = $valores['content_md']; }
+        $post->save();
+
+        return redirect('admin/post');
     }
 
     /**
@@ -51,11 +76,11 @@ class PublicacionesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\PostModel  $postModel
-     * @return \Illuminate\Http\Response
      */
     public function edit($id, PostModel $postModel)
     {
-        dd($postModel->find($id));
+        //dd($postModel->find($id));
+        return view('admin.post.post_update')->with('publicacion', $postModel->find($id));
     }
 
     /**
@@ -63,11 +88,24 @@ class PublicacionesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\PostModel  $postModel
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PostModel $postModel)
+    public function update($id, Request $request)
     {
-        dd("update");
+        $validated = $request->validate([
+            'title' => 'required|min:3',
+            'content' => 'required|min:2|max:500',
+        ]);
+
+        $valores = $request->toArray();
+        //dd($valores);
+
+        $postModel = PostModel::find($id);
+        $postModel->title = $valores['title'];
+        $postModel->content = $valores['content'];
+        if(isset($valores['content_md'])) { $postModel->content_md = $valores['content_md']; }
+        $postModel->save();
+
+        return redirect('admin/post');
     }
 
     /**
