@@ -8,10 +8,9 @@ use App\Models\PostModel;
 
 class PostValidations
 {
-    public function validaSlug($slug, $id = null)
+    public function validaSlug($slug)
     {
-        $existencia = PostModel::where('slug',$slug)->first();
-        //dump($existencia == null);
-        return $existencia == null;
+        $consulta = PostModel::where('slug',$slug)->first();
+        return $consulta != null;
     }
 }

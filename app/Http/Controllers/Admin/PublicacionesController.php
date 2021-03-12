@@ -47,9 +47,9 @@ class PublicacionesController extends Controller
         do
         {
             $slug = PostUtils::formateadorSlug($valores['title'], $slugExistente);
-            $slugValido = $validadorSlug->validaSlug($slug);
-        } while(!$slugValido);
-        //dd($slug);
+            $slugExistente = $validadorSlug->validaSlug($slug);
+        } while($slugExistente);
+        //dd("guardar: ".$slug);
 
         $post = new PostModel();
         $post->title = $valores['title'];
