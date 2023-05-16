@@ -31,7 +31,12 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function menuC()
+    public function menuA1()
+    {
+        return view('home');
+    }
+
+    public function menuA2()
     {
         return view('home');
     }
