@@ -31,7 +31,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function menuA()
+    public function menuC()
     {
         return view('home');
     }
