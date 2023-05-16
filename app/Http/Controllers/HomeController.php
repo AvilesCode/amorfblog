@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function menuNuevo()
+    {
+        return view('home');
+    }
 }
